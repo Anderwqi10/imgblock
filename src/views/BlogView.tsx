@@ -11,27 +11,28 @@ import {
 } from "../services/pg.api.service";
 
 const sidebarCategories = [
-  { icon: "🆕", label: "Todos", value: "" },
-  { icon: "📈", label: "Mercado", value: "Mercado" },
-  { icon: "⚙️", label: "Tecnología", value: "Tecnología" },
+  { icon: "🆕", label: "All", value: "" },
+  { icon: "📈", label: "Market", value: "Market" },
+  { icon: "⚙️", label: "Technology", value: "Technology" },
   { icon: "🏦", label: "DeFi", value: "DeFi" },
   { icon: "🖼️", label: "NFT", value: "NFT" },
-  { icon: "📚", label: "Educación", value: "Educación" },
+  { icon: "⚖️", label: "Regulation", value: "Regulation" },
+  { icon: "📚", label: "Education", value: "Education" },
 ];
 
 const meetups = [
-  { month: "JUL", day: "12", title: "DeFi Summit 2026 – Buenos Aires", tags: ["Presencial", "Gratis"] },
-  { month: "JUL", day: "18", title: "Blockchain Dev Meetup Online", tags: ["Remote", "Gratis"] },
-  { month: "AGO", day: "3", title: "NFT & Web3 Expo – Medellín", tags: ["Presencial", "Pago"] },
+  { month: "JUL", day: "12", title: "DeFi Summit 2026 – Buenos Aires", tags: ["In-person", "Free"] },
+  { month: "JUL", day: "18", title: "Blockchain Dev Meetup Online", tags: ["Remote", "Free"] },
+  { month: "AUG", day: "3", title: "NFT & Web3 Expo – Medellín", tags: ["In-person", "Paid"] },
 ];
 
 const podcasts = [
-  "Bitcoin: El futuro del dinero con Nic Carter",
-  "DeFi explicado para principiantes – Bankless",
-  "Ethereum Layer 2: Todo lo que necesitas saber",
-  "Cómo sobrevivir al bear market – La Crypto Mente",
-  "NFTs y la nueva economía digital – Metaverso Hoy",
-  "Seguridad en cripto: Protege tus activos – CryptoSec",
+  "Bitcoin: The Future of Money with Nic Carter",
+  "DeFi Explained for Beginners – Bankless",
+  "Ethereum Layer 2: Everything You Need to Know",
+  "How to Survive the Bear Market – The Crypto Mind",
+  "NFTs and the New Digital Economy – Metaverse Today",
+  "Crypto Security: Protect Your Assets – CryptoSec",
 ];
 
 const avatarColors = ["#e84141", "#f7931a", "#00d4b5", "#5b9cf6", "#a855f7"];
@@ -39,11 +40,11 @@ const avatarColors = ["#e84141", "#f7931a", "#00d4b5", "#5b9cf6", "#a855f7"];
 const timeAgo = (dateStr: string) => {
   const diff = Date.now() - new Date(dateStr).getTime();
   const days = Math.floor(diff / 86400000);
-  if (days === 0) return "hoy";
-  if (days === 1) return "ayer";
-  if (days < 7) return `hace ${days} días`;
-  if (days < 30) return `hace ${Math.floor(days / 7)} semanas`;
-  return `hace ${Math.floor(days / 30)} meses`;
+  if (days === 0) return "today";
+  if (days === 1) return "yesterday";
+  if (days < 7) return `${days} days ago`;
+  if (days < 30) return `${Math.floor(days / 7)} weeks ago`;
+  return `${Math.floor(days / 30)} months ago`;
 };
 
 function AuthModal({ onClose, onAuth }: { onClose: () => void; onAuth: (user: PgUser) => void }) {
@@ -67,10 +68,10 @@ function AuthModal({ onClose, onAuth }: { onClose: () => void; onAuth: (user: Pg
         onAuth(res.data.user);
         onClose();
       } else {
-        setError(res.msg || "Error desconocido");
+        setError(res.msg || "Unknown error");
       }
     } catch {
-      setError("Error de conexión con el servidor");
+      setError("Connection error");
     } finally {
       setLoading(false);
     }
@@ -81,7 +82,7 @@ function AuthModal({ onClose, onAuth }: { onClose: () => void; onAuth: (user: Pg
       <div className="bg-[#0d0d3b] border border-white/10 rounded-2xl p-8 w-full max-w-sm mx-4">
         <div className="flex items-center justify-between mb-6">
           <h2 className="text-white font-bold text-xl">
-            {mode === "login" ? "Iniciar sesión" : "Crear cuenta"}
+            {mode === "login" ? "Sign in" : "Create account"}
           </h2>
           <button onClick={onClose} className="text-white/40 hover:text-white text-xl">✕</button>
         </div>
@@ -94,7 +95,7 @@ function AuthModal({ onClose, onAuth }: { onClose: () => void; onAuth: (user: Pg
                 mode === m ? "bg-[#1e1e7a] text-white border border-white/20" : "text-white/50 hover:text-white"
               }`}
             >
-              {m === "login" ? "Entrar" : "Registrarse"}
+              {m === "login" ? "Sign in" : "Register"}
             </button>
           ))}
         </div>
@@ -102,7 +103,7 @@ function AuthModal({ onClose, onAuth }: { onClose: () => void; onAuth: (user: Pg
           {mode === "register" && (
             <input
               type="text"
-              placeholder="Nombre de usuario"
+              placeholder="Username"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
               className="bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white text-sm outline-none placeholder-white/30 focus:border-white/30"
@@ -118,7 +119,7 @@ function AuthModal({ onClose, onAuth }: { onClose: () => void; onAuth: (user: Pg
           />
           <input
             type="password"
-            placeholder="Contraseña (mín. 6 caracteres)"
+            placeholder="Password (min. 6 characters)"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
@@ -130,7 +131,7 @@ function AuthModal({ onClose, onAuth }: { onClose: () => void; onAuth: (user: Pg
             disabled={loading}
             className="mt-2 py-3 rounded-xl bg-[#e84141] text-white font-semibold text-sm hover:bg-[#c83030] transition-all disabled:opacity-50"
           >
-            {loading ? "Cargando..." : mode === "login" ? "Entrar" : "Crear cuenta"}
+            {loading ? "Loading..." : mode === "login" ? "Sign in" : "Create account"}
           </button>
         </form>
       </div>
@@ -190,18 +191,18 @@ export default function BlogView() {
                   onClick={handleLogout}
                   className="text-white/40 hover:text-white text-xs text-left transition-colors"
                 >
-                  Cerrar sesión →
+                  Sign out →
                 </button>
               </div>
             ) : (
               <div className="flex flex-col gap-2">
-                <div className="text-white text-sm font-semibold mb-1">Tu cuenta</div>
-                <p className="text-white/40 text-xs">Inicia sesión para guardar favoritos y crear posts.</p>
+                <div className="text-white text-sm font-semibold mb-1">Your account</div>
+                <p className="text-white/40 text-xs">Sign in to save favorites and create posts.</p>
                 <button
                   onClick={() => setShowAuth(true)}
                   className="mt-2 py-2 rounded-xl bg-[#1e1e7a] text-white text-sm font-semibold border border-white/20 hover:bg-[#2a2a9e] transition-all"
                 >
-                  Entrar / Registrarse
+                  Sign in / Register
                 </button>
               </div>
             )}
@@ -209,7 +210,7 @@ export default function BlogView() {
 
           {/* Categories */}
           <div className="rounded-2xl border border-white/10 bg-white/5 p-4 flex flex-col gap-1">
-            <div className="text-white font-bold text-sm mb-2">Categorías</div>
+            <div className="text-white font-bold text-sm mb-2">Categories</div>
             {sidebarCategories.map((c) => (
               <button
                 key={c.value}
@@ -229,9 +230,9 @@ export default function BlogView() {
         <div className="flex flex-col gap-4">
           <div className="flex items-center justify-between mb-1">
             <h2 className="text-white font-bold text-lg">
-              {activeCategory || "Todos los posts"}
+              {activeCategory || "All posts"}
             </h2>
-            <span className="text-white/30 text-xs">{filtered.length} artículos</span>
+            <span className="text-white/30 text-xs">{filtered.length} articles</span>
           </div>
 
           {loading ? (
@@ -250,7 +251,7 @@ export default function BlogView() {
             ))
           ) : filtered.length === 0 ? (
             <div className="rounded-2xl border border-white/10 bg-white/5 p-8 text-center text-white/40">
-              No hay posts en esta categoría todavía.
+              No posts in this category yet.
             </div>
           ) : (
             filtered.map((post) => (
@@ -308,7 +309,7 @@ export default function BlogView() {
           {/* Meetups */}
           <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
             <div className="flex items-center justify-between mb-3">
-              <span className="text-white font-bold text-sm">Eventos</span>
+              <span className="text-white font-bold text-sm">Events</span>
               <span className="text-[#e84141] text-xs">→</span>
             </div>
             {meetups.map((m, i) => (
