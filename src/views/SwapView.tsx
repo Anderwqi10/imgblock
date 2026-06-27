@@ -14,7 +14,7 @@ const timeOptions: { label: string; days: number | string }[] = [
 ];
 
 const Card = ({ children, className = "" }: { children: React.ReactNode; className?: string }) => (
-  <div className={`rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm ${className}`}>{children}</div>
+  <div className={`rounded-2xl border border-white/10 bg-gradient-to-br from-[#1e1e6a]/50 via-[#12124a]/30 to-[#0a0a2e]/60 backdrop-blur-sm shadow-lg shadow-black/30 ${className}`}>{children}</div>
 );
 
 const Spinner = () => (
@@ -147,7 +147,7 @@ export default function SwapView() {
           </div>
 
           {/* From */}
-          <div className="rounded-xl bg-white/5 border border-white/10 p-4 mb-2">
+          <div className="rounded-xl bg-gradient-to-br from-white/8 to-white/3 border border-white/10 p-4 mb-2">
             <div className="text-white/50 text-xs mb-2 font-medium">Desde</div>
             <div className="flex items-center justify-between">
               <input
@@ -185,7 +185,7 @@ export default function SwapView() {
           </div>
 
           {/* To */}
-          <div className="rounded-xl bg-white/5 border border-white/10 p-4 mb-6">
+          <div className="rounded-xl bg-gradient-to-br from-white/8 to-white/3 border border-white/10 p-4 mb-6">
             <div className="text-white/50 text-xs mb-2 font-medium">Para</div>
             <div className="flex items-center justify-between">
               <span className="text-2xl text-white/30">0.0</span>
@@ -196,7 +196,7 @@ export default function SwapView() {
             <div className="text-white/30 text-xs mt-2">Balance: 0.0</div>
           </div>
 
-          <button className="w-full py-4 rounded-xl bg-[#1a1a5e] border border-white/10 text-white font-semibold text-base hover:bg-[#22227a] transition-all">
+          <button className="w-full py-4 rounded-xl bg-gradient-to-r from-[#e84141] to-[#7c3aed] text-white font-semibold text-base hover:opacity-90 transition-all shadow-lg shadow-[#e84141]/20">
             Ingresa un monto
           </button>
         </Card>

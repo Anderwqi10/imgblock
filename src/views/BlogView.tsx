@@ -175,7 +175,7 @@ export default function BlogView() {
         {/* Left Sidebar */}
         <div className="flex flex-col gap-5">
           {/* User card */}
-          <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
+          <div className="rounded-2xl border border-white/10 bg-gradient-to-br from-[#1e1e6a]/50 to-[#0a0a2e]/60 shadow-lg shadow-black/30 p-4">
             {user ? (
               <div className="flex flex-col gap-3">
                 <div className="flex items-center gap-3">
@@ -209,7 +209,7 @@ export default function BlogView() {
           </div>
 
           {/* Categories */}
-          <div className="rounded-2xl border border-white/10 bg-white/5 p-4 flex flex-col gap-1">
+          <div className="rounded-2xl border border-white/10 bg-gradient-to-br from-[#1e1e6a]/50 to-[#0a0a2e]/60 shadow-lg shadow-black/30 p-4 flex flex-col gap-1">
             <div className="text-white font-bold text-sm mb-2">Categories</div>
             {sidebarCategories.map((c) => (
               <button
@@ -255,7 +255,7 @@ export default function BlogView() {
             </div>
           ) : (
             filtered.map((post) => (
-              <div key={post.id} className="rounded-2xl border border-white/10 bg-white/5 p-5 hover:bg-white/10 transition-all">
+              <div key={post.id} className="rounded-2xl border border-white/10 bg-gradient-to-br from-[#1e1e6a]/40 to-[#0a0a2e]/50 p-5 hover:from-[#1e1e6a]/60 hover:to-[#0a0a2e]/70 transition-all shadow-md shadow-black/20">
                 <div className="flex gap-4">
                   {post.image_url && (
                     <div className="flex-shrink-0 w-28 h-24 rounded-xl overflow-hidden bg-white/5">
@@ -307,7 +307,7 @@ export default function BlogView() {
         {/* Right Sidebar */}
         <div className="flex flex-col gap-5">
           {/* Meetups */}
-          <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
+          <div className="rounded-2xl border border-white/10 bg-gradient-to-br from-[#1e1e6a]/50 to-[#0a0a2e]/60 shadow-lg shadow-black/30 p-4">
             <div className="flex items-center justify-between mb-3">
               <span className="text-white font-bold text-sm">Events</span>
               <span className="text-[#e84141] text-xs">→</span>
@@ -333,7 +333,7 @@ export default function BlogView() {
           </div>
 
           {/* Podcasts */}
-          <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
+          <div className="rounded-2xl border border-white/10 bg-gradient-to-br from-[#1e1e6a]/50 to-[#0a0a2e]/60 shadow-lg shadow-black/30 p-4">
             <div className="flex items-center justify-between mb-3">
               <span className="text-white font-bold text-sm">Podcasts</span>
               <span className="text-[#e84141] text-xs">→</span>

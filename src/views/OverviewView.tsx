@@ -18,7 +18,7 @@ const tooltipStyle = {
 };
 
 const Card = ({ children, className = "" }: { children: React.ReactNode; className?: string }) => (
-  <div className={`rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm p-6 ${className}`}>{children}</div>
+  <div className={`rounded-2xl border border-white/10 bg-gradient-to-br from-[#1e1e6a]/50 via-[#12124a]/30 to-[#0a0a2e]/60 backdrop-blur-sm shadow-lg shadow-black/30 p-6 ${className}`}>{children}</div>
 );
 
 const Spinner = () => (
@@ -175,12 +175,12 @@ export default function OverviewView() {
           </div>
         </div>
 
-        <div className="rounded-2xl border border-white/10 bg-white/5 overflow-hidden">
+        <div className="rounded-2xl border border-white/10 bg-gradient-to-b from-[#1e1e6a]/40 to-[#0a0a2e]/60 overflow-hidden shadow-lg shadow-black/30">
           <table className="w-full">
             <thead>
-              <tr className="border-b border-white/10">
+              <tr className="border-b border-white/10 bg-gradient-to-r from-[#1a1a5e]/80 via-[#16166a]/50 to-transparent">
                 {["#", "Moneda", "Precio", "Cambio 24h", "Volumen 24h", "Cap. Mercado", "Gráfico"].map((h) => (
-                  <th key={h} className="text-left text-white/50 text-xs font-medium px-5 py-4">{h}</th>
+                  <th key={h} className="text-left text-white/70 text-xs font-semibold px-5 py-4 uppercase tracking-wider">{h}</th>
                 ))}
               </tr>
             </thead>
@@ -198,7 +198,7 @@ export default function OverviewView() {
                 : (coins ?? []).map((coin: CoinMarket, i: number) => {
                     const pos = coin.price_change_percentage_24h >= 0;
                     return (
-                      <tr key={coin.id} className="border-b border-white/5 hover:bg-white/5 transition-colors">
+                      <tr key={coin.id} className="border-b border-white/5 hover:bg-gradient-to-r hover:from-white/5 hover:to-transparent transition-all">
                         <td className="px-5 py-3 text-white/40 text-sm">{i + 1}</td>
                         <td className="px-5 py-3">
                           <div className="flex items-center gap-2">

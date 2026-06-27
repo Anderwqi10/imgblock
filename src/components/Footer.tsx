@@ -1,7 +1,5 @@
 import React, { useMemo } from "react";
 
-import WhiteLogo from "../assets/images/header-logo-white.svg";
-
 import Twitter from "../assets/images/social-media/twitter.svg";
 import Fb from "../assets/images/social-media/fb.svg";
 import Linkedin from "../assets/images/social-media/linkedin.svg";
@@ -172,12 +170,9 @@ export function Footer() {
     <div className="relative bottom-0 w-full">
       <div className="flex flex-col sm:flex-row justify-between items-center sm:items-start px-4 sm:px-8 md:px-12 lg:px-20 mt-20 sm:mt-32 md:mt-40 gap-8 sm:gap-0">
         <div className="flex flex-col justify-center items-center sm:items-start w-full sm:w-auto">
-          <a className="w-full h-full flex justify-center sm:justify-start" href="https://lumanagi.com">
-            <img 
-              src={WhiteLogo} 
-              alt="logo" 
-              className="max-w-full w-48 sm:w-56 md:w-64 lg:w-72 h-auto" 
-            />
+          <a className="flex items-center gap-3 justify-center sm:justify-start" href="/">
+            <img src="/logoNovaFy.png" alt="Novafy" className="h-10 w-auto" />
+            <span className="text-white font-bold text-xl tracking-wide">Novafy</span>
           </a>
           <SocialMedia />
         </div>
@@ -188,13 +183,11 @@ export function Footer() {
       <hr className="mx-4 sm:mx-8 md:mx-12 lg:mx-20 mt-6 sm:mt-8 mb-4 text-white border-white/20"></hr>
       <div className="flex w-full mb-6 sm:mb-8 md:mb-10 px-4 sm:px-8 md:px-12 lg:px-20">
         <div className="flex flex-col sm:flex-row justify-center items-center w-full gap-2 sm:gap-0 text-sm sm:text-base md:text-lg text-white">
-          <a 
-            className="opacity-50 hover:opacity-75 transition-opacity" 
-            href="https://lumanagi.com"
-            target="_blank"
-            rel="noopener noreferrer"
+          <a
+            className="opacity-50 hover:opacity-75 transition-opacity"
+            href="/"
           >
-            © Lumanagi
+            © Novafy
           </a>
           <div className="flex items-center ml-0 sm:ml-2 gap-1 sm:gap-2">
             <span className="opacity-50 cursor-pointer hover:opacity-75 transition-opacity">HU</span>

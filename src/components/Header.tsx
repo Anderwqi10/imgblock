@@ -3,14 +3,6 @@ import { Link, useLocation } from "react-router-dom";
 import { useWeb3React } from "@web3-react/core";
 import ConnectWallet from "./auth/ConnectWallet";
 
-const DotGridLogo = () => (
-  <div className="grid grid-cols-3 gap-[5px] w-9 h-9">
-    {Array.from({ length: 9 }).map((_, i) => (
-      <div key={i} className="w-2 h-2 rounded-full bg-white" />
-    ))}
-  </div>
-);
-
 export function Header() {
   const { account } = useWeb3React();
   const location = useLocation();
@@ -23,10 +15,11 @@ export function Header() {
     addr ? `${addr.slice(0, 6)}...${addr.slice(-4)}` : "";
 
   return (
-    <header className="flex items-center justify-between w-full px-8 md:px-16 py-6">
+    <header className="flex items-center justify-between w-full px-8 md:px-16 py-5">
       {/* Logo */}
-      <Link to="/" className="flex items-center">
-        <DotGridLogo />
+      <Link to="/" className="flex items-center gap-3">
+        <img src="/logoNovaFy.png" alt="Novafy" className="h-12 w-auto object-contain" />
+        <span className="font-bold text-xl tracking-wide leading-none bg-gradient-to-r from-white via-[#a78bfa] to-[#e84141] bg-clip-text text-transparent">Novafy</span>
       </Link>
 
       {/* Nav tabs - center (optional, shown on larger screens) */}
