@@ -1,8 +1,8 @@
-![](/public/favicon.ico)
+![](/public/logoNovaFy.png)
 
 [![Styled With Prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)](https://prettier.io/)
 
-# LMNG 2026
+# novaFi
 
 Decentralized DeFi trading, staking and prediction platform. Includes real-time cryptocurrency data, token swap, NFTs and a blog backed by a SQLite database.
 
@@ -37,7 +37,7 @@ No database installation required. SQLite is included as an npm dependency and t
 ```bash
 # 1. Clone the repository
 git clone git@github.com:Anderwqi10/imgblockchain.git
-cd imgblockchain
+cd novaFi
 
 # 2. Install frontend dependencies
 npm install
@@ -135,7 +135,7 @@ GET /api/pg/blog/:id
 ## Project structure
 
 ```
-lmng2026/
+novaFi/
 ├── src/
 │   ├── views/        # Swap, Overview, Coins, NFT, Blog
 │   ├── components/   # Header, Footer, Router, ConnectWallet
